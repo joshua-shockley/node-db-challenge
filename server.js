@@ -61,6 +61,7 @@ server.get('/api/tasks', (req, res) => {
     DataB.findTasks()
         .then(tasks => {
             res.status(200).json(tasks);
+            console.log(tasks.taskCompleted);
         })
         .catch(error => {
             res.status(500).json(error);
