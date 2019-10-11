@@ -15,6 +15,35 @@ server.get('/', (req, res) => {
 });
 
 //other endpoints go here
+server.get('/api/projects', (req, res) => {
+    DataB.findProjects()
+        .then(projects => {
+            res.status(200).json(projects);
+        })
+        .catch(error => {
+            res.status(500).json(error);
+        });
+});
+
+server.get('/api/resources', (req, res) => {
+    DataB.findResources()
+        .then(resources => {
+            res.status(200).json(resources);
+        })
+        .catch(error => {
+            res.status(500).json(error);
+        });
+});
+
+server.get('/api/projects/:id', (req, res) => {
+    DataB.findOneProject(req.params.id)
+        .then(project => {
+            res.status(200).json(project);
+        })
+        .catch(error => {
+            res.status(500).json(error, 'what happend, Homey?!');
+        });
+});
 
 
 module.exports = server;
