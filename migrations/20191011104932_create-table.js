@@ -4,15 +4,15 @@ exports.up = function(knex) {
             tbl.string('projectName', 128)
                 .notNullable();
             tbl.text('projectDescription');
-            tbl.boolean('projectCompleted')
-                .notNullable();
+            tbl.boolean('projectCompleted');
+
         })
         .createTable('tasks', tbl => {
             tbl.increments('taskId');
             tbl.integer('step_number', 20).notNullable();
             tbl.string('taskDescription', 255).notNullable();
             tbl.text('notes');
-            tbl.boolean('taskCompleted').notNullable();
+            tbl.boolean('taskCompleted');
             tbl.integer('projects_id', 20)
                 .notNullable()
                 .unsigned()
